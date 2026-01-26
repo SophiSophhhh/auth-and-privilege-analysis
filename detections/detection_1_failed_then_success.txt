@@ -5,8 +5,11 @@ Description:
 This detection identifies SSH authentication activity where multiple failed login attempts are followed by a successful login from the same source IP. This pattern may indicate credential guessing or brute force activity resulting in account compromise.
 
 Detection Logic:
+- Multiple failed SSH authentication attempts from a single source IP
+- A subsequent successful SSH login from the same source IP within a short time window
 
 What Happened:
+An SSH authentication event was observed where multiple failed login attempts from a single source IP were followed by a successful login to the same account.
 
 Risk Level:
 
