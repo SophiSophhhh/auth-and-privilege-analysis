@@ -1,0 +1,14 @@
+Detection Name:
+Multiple Failed SSH Logins Followed by Successful Authentication
+
+Description:
+
+Detection Logic:
+
+What Happened:
+
+Risk Level:
+
+Why SOC Cares:
+
+Recommended Action:
