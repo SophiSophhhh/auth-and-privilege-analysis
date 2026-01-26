@@ -19,3 +19,6 @@ Why SOC Cares:
 Multiple failed login attempts followed by a successful authentication from the same source IP may indicate credential misuse. This behavior increases the risk of account compromise and warrants further investigation to prevent privilege escalation or lateral movement.
 
 Recommended Action:
+- Validate whether the source IP and login activity are expected for the user.
+- Monitor post-login activity for indicators of privilege escalation, lateral movement, or persistence.
+- Correlate authentication logs to identify abnormal login patterns or repeated access attempts.
