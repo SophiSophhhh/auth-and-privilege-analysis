@@ -2,7 +2,8 @@ Detection Name:
 Multiple Failed SSH Logins Followed by Successful Authentication
 
 Description:
-This detection identifies SSH authentication activity where multiple failed login attempts are followed by a successful login from the same source IP. This pattern may indicate credential guessing or brute force activity resulting in account compromise.
+This detection identifies SSH authentication activity where multiple failed login attempts are followed by a successful login from the same source IP. This pattern may indicate 
+credential guessing or brute force activity resulting in account compromise.
 
 Detection Logic:
 - Multiple failed SSH authentication attempts from a single source IP
@@ -12,7 +13,9 @@ What Happened:
 An SSH authentication event was observed where multiple failed login attempts from a single source IP were followed by a successful login to the same account.
 
 Risk Level:
+Medium – multiple failed login attempts followed by a successful login indicate potential credential misuse, but no privilege escalation or lateral movement has occurred yet.
 
 Why SOC Cares:
+Multiple failed login attempts followed by a successful authentication from the same source IP may indicate credential misuse. This behavior increases the risk of account compromise and warrants further investigation to prevent privilege escalation or lateral movement.
 
 Recommended Action:
