@@ -2,6 +2,7 @@ Detection Name:
 Multiple Failed SSH Logins Followed by Successful Authentication
 
 Description:
+This detection identifies SSH authentication activity where multiple failed login attempts are followed by a successful login from the same source IP. This pattern may indicate credential guessing or brute force activity resulting in account compromise.
 
 Detection Logic:
 
