@@ -9,3 +9,11 @@ Detection Logic:
 - Originating from different source IP addresses
 - Targeting the same user account
 - Occurring within a defined time window
+
+Potential False Positives:
+- Automated scripts or services using a shared account across multiple hosts.
+- Users connecting from multiple VPN endpoints or NAT devices, causing multiple IPs to appear.
+- Shared service accounts legitimately accessed by multiple users or systems.
+- Recent password rotations causing failed login attempts from multiple IPs.
+
+
