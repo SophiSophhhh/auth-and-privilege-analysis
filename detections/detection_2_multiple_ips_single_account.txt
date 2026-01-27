@@ -19,5 +19,21 @@ Potential False Positives:
 What Happened:
 Multiple SSH authentication attempts were observed from different source IPs targeting the same user account, triggering the alert due to unusual access patterns.
 
+Risk Level:
+Medium – multiple authentication attempts from different source IPs targeting a single account may indicate credential abuse; however, no successful authentication or privilege escalation has been observed.
+
+Why SOC Cares:
+This behavior aligns with password spraying or coordinated credential abuse techniques. If successful, it could result in unauthorized access to a valid account and enable further activity such as lateral movement or persistence, particularly if the account has elevated privileges.
+
+Additional Context to Review
+- Are the source IPs internal, external, or VPN-assigned?
+- Are the IPs associated with known infrastructure or automation?
+- Is the account a shared or service account?
+- Does this user normally authenticate from multiple locations?
+
+Recommended Actions:
+- Validate whether the source IP addresses are known and expected for the user account.
+- Correlate authentication logs to identify abnormal login patterns or repeated access attempts from multiple source IPs.
+- Monitor for any successful authentication events and subsequent post-login activity, including privilege escalation or persistence mechanisms.
 
 
