@@ -16,4 +16,8 @@ Potential False Positives:
 - Shared service accounts legitimately accessed by multiple users or systems.
 - Recent password rotations causing failed login attempts from multiple IPs.
 
+What Happened:
+Multiple SSH authentication attempts were observed from different source IPs targeting the same user account, triggering the alert due to unusual access patterns.
+
+
 
