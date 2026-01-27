@@ -1,1 +1,3 @@
+Description:
+This detection identifies multiple authentication attempts against a single user account originating from different source IP addresses, which may indicate abnormal access patterns requiring further investigation.
 
