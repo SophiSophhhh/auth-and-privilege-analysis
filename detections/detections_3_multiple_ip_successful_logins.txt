@@ -1,1 +1,29 @@
+Detection Name:
+Multiple Successful SSH Logins from Different Source IPs to the Same User Account
+
+What Happened:
+Multiple successful SSH authentication events were observed for the same user account originating from different source IP addresses within a short time window.
+
+Detection Logic:
+- Successful SSH authentication events
+- Targeting the same user account
+- Originating from two or more different source IP addresses
+- Occurring within a defined time window (e.g., 10 minutes)
+
+Potential False Positives:
+- Shared service or automation accounts used across multiple systems
+- VPN or NAT usage causing legitimate source IP changes
+- Users accessing the same account from multiple approved devices or host
+
+Medium – multiple successful logins from different source IPs targeting the same user account may indicate potential unauthorized access; however, no malicious post-login activity has been observed.
+
+Why SOC Cares
+Multiple successful SSH authentications from different source IPs to the same user account could indicate credential compromise and may enable privilege escalation, persistence, or lateral movement within the environment.
+
+Recommended Actions:
+- Validate whether the affected user account is a shared or service account and confirm that concurrent access is expected.
+- Verify whether the source IP addresses are authorized, recognized, and consistent with normal user behavior.
+- Correlate authentication logs to identify repeated access patterns or abnormal login behavior involving the same account.
+- Monitor post-login activity for indicators of privilege escalation, persistence, or lateral movement.
+  Escalate to Incident Response if the account is non-shared and the access pattern is determined to be unauthorized.
 
