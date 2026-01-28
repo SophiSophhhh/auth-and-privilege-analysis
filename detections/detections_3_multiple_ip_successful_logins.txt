@@ -15,6 +15,7 @@ Potential False Positives:
 - VPN or NAT usage causing legitimate source IP changes
 - Users accessing the same account from multiple approved devices or host
 
+Risk Level:
 Medium – multiple successful logins from different source IPs targeting the same user account may indicate potential unauthorized access; however, no malicious post-login activity has been observed.
 
 Why SOC Cares
