@@ -3,11 +3,16 @@ Detection Name: Privilege Escalation via Sudo
 Detection Concept:
 Successful sudo usage by a non-admin user shortly after authentication
 
+What Happened:
+A successful SSH login to a non-root user account was followed by sudo command execution within a short time window.
+
 Detection Logic:
 - Successful SSH login
 - Followed by sudo command execution
 - By a non-admin user
 - Within a short time window (e.g. 5–10 minutes)
+
+False Positives:
 
 Risk Level:
 High – Sudo activity occurring immediately after authentication significantly increases risk, as it suggests the primary purpose of the login was to execute privileged commands. This behavior is consistent with post-compromise privilege escalation and reduces the window for detection.
