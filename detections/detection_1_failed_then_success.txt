@@ -12,6 +12,18 @@ Detection Logic:
 - Followed by 1 successful SSH login
 - Occurring within a 10-minute time window
 
+Assumptions And Limitations
+Assumptions:
+- SSH authentication logs are accurately collected and centrally available.
+- The source IP address in the logs reflects the true origin of the login attempt.
+- User accounts are uniquely associated with individuals (not shared accounts).
+- The time window captures all relevant authentication attempts.
+Limitations:
+- This detection does not confirm malicious intent; it identifies suspicious authentication patterns only.
+- Legitimate user behavior or automated processes may generate similar patterns.
+- Without endpoint telemetry, post-authentication activity cannot be validated.
+- If the attacker uses distributed IPs, this detection may not trigger.
+
 Potential False Positives:
 - User mistyping credentials multiple times before successfully logging in
 - Automated configuration or deployment tools retrying authentication
