@@ -1,51 +1,50 @@
-Detection Name:
+# Detection Name:
 Multiple Failed SSH Logins Followed by Successful Authentication
 
-Description:
+# Description:
 This detection identifies SSH authentication activity where multiple failed login attempts are followed by a successful login from the same source IP. This pattern may indicate 
 credential guessing or brute force activity potential account compromise.
 
-Detection Logic:
+# Detection Logic:
 - ≥ 5 failed SSH authentication attempts
 - From the same source IP address
 - Targeting the same user account
 - Followed by 1 successful SSH login
 - Occurring within a 10-minute time window
 
-Assumptions And Limitations
-Assumptions:
+# Assumptions:
 - SSH authentication logs are accurately collected and centrally available.
 - The source IP address in the logs reflects the true origin of the login attempt.
 - User accounts are uniquely associated with individuals (not shared accounts).
 - The time window captures all relevant authentication attempts.
-Limitations:
+# Limitations:
 - This detection does not confirm malicious intent; it identifies suspicious authentication patterns only.
 - Legitimate user behavior or automated processes may generate similar patterns.
 - Without endpoint telemetry, post-authentication activity cannot be validated.
 - If the attacker uses distributed IPs, this detection may not trigger.
 
-Potential False Positives:
+# Potential False Positives:
 - User mistyping credentials multiple times before successfully logging in
 - Automated configuration or deployment tools retrying authentication
 - Known bastion hosts or jump servers with repeated login attempts
 - Scripts or monitoring tools using outdated credentials
 
-What Happened:
+# What Happened:
 An SSH authentication event was observed where multiple failed login attempts from a single source IP were followed by a successful login to the same account.
 
-Additional Context to Review:
+# Additional Context to Review:
 - Is the source IP previously associated with the user?
 - Is the source IP from a known geographic location for the user?
 - Is the login occurring outside normal working hours?
 - Has the account shown similar behavior in the past?
 
-Risk Level:
+# Risk Level:
 Medium – multiple failed login attempts followed by a successful login indicate potential credential misuse, but no privilege escalation or lateral movement has occurred yet.
 
-Why SOC Cares:
+# Why SOC Cares:
 Multiple failed login attempts followed by a successful authentication from the same source IP may indicate credential misuse. This behavior increases the risk of account compromise and warrants further investigation to prevent privilege escalation or lateral movement.
 
-Recommended Actions:
+# Recommended Actions:
 - Validate whether the source IP and login activity are expected for the user.
 - Monitor post-login activity for indicators of privilege escalation, lateral movement, or persistence.
 - Correlate authentication logs to identify abnormal login patterns or repeated access attempts.
