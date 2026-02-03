@@ -2,28 +2,29 @@ Detection Name:
 Multiple Source IPs Attempting Authentication Against a Single User Account
 
 Description:
-This detection identifies multiple authentication attempts against a single user account originating from different source IP addresses, which may indicate abnormal access patterns requiring further investigation.
+This detection identifies multiple authentication attempts against a single user account originating from different source IP addresses followed by success, which may indicate abnormal access patterns requiring further investigation.
 
 Detection Logic:
 - ≥ 5 failed SSH authentication attempts
-- Originating from different source IP addresses
+- Originating from multiple distinct source IP addresses
 - Targeting the same user account
-- Occurring within a defined time window
+- Followed by a successful SSH authentication to the same account from one of the previously observed source IPs
+- All activity occurring within a 10-minute time window
 
 Potential False Positives:
 - Automated scripts or services using a shared account across multiple hosts.
-- Users connecting from multiple VPN endpoints or NAT devices, causing multiple IPs to appear.
+- Users connecting via rotating VPN endpoints or NAT devices, causing multiple IPs to appear.
 - Shared service accounts legitimately accessed by multiple users or systems.
 - Recent password rotations causing failed login attempts from multiple IPs.
 
 What Happened:
-Multiple SSH authentication attempts were observed from different source IPs targeting the same user account, triggering the alert due to unusual access patterns.
+Multiple SSH authentication attempts were observed from different source IPs targeting the same user account, with one successful login from a previously failing IP. This pattern triggered the alert due to unusual access behavior and meets the defined detection criteria.
 
 Risk Level:
 Medium – multiple authentication attempts from different source IPs targeting a single account may indicate credential abuse; however, no successful authentication or privilege escalation has been observed.
 
 Why SOC Cares:
-This behavior aligns with password spraying or coordinated credential abuse techniques. If successful, it could result in unauthorized access to a valid account and enable further activity such as lateral movement or persistence, particularly if the account has elevated privileges.
+This behavior may indicate coordinated credential abuse attempts against a single account, increasing the risk of unauthorized access if successful. Detecting this pattern early allows SOC teams to investigate, validate IP legitimacy, and prevent potential account compromise or lateral movement.
 
 Additional Context to Review
 - Are the source IPs internal, external, or VPN-assigned?
