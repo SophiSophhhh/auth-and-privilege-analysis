@@ -1,8 +1,8 @@
 Detection Name:
-Multiple Source IPs Attempting Authentication Against a Single User Account
+Successful SSH Login Following Multiple Failed Attempts from Multiple Source IPs
 
 Description:
-This detection identifies multiple authentication attempts against a single user account originating from different source IP addresses followed by success, which may indicate abnormal access patterns requiring further investigation.
+This detection identifies authentication activity where multiple failed SSH login attempts against a single user account originate from different source IP addresses and are followed by a successful authentication. This pattern may indicate credential compromise or coordinated access attempts requiring further investigation.
 
 Detection Logic:
 - ≥ 5 failed SSH authentication attempts
@@ -18,10 +18,9 @@ Potential False Positives:
 - Recent password rotations causing failed login attempts from multiple IPs.
 
 What Happened:
-Multiple SSH authentication attempts were observed from different source IPs targeting the same user account, with one successful login from a previously failing IP. This pattern triggered the alert due to unusual access behavior and meets the defined detection criteria.
+Multiple failed SSH authentication attempts were observed against a single user account from several source IP addresses. A successful authentication then occurred from a source IP that had previously generated multiple failed attempts, indicating potential credential guessing or compromise requiring further investigation.
 
-Risk Level:
-Medium – multiple authentication attempts from different source IPs targeting a single account may indicate credential abuse; however, no successful authentication or privilege escalation has been observed.
+Medium–High — successful authentication following failed attempts from multiple source IPs may indicate credential compromise.
 
 Why SOC Cares:
 This behavior may indicate coordinated credential abuse attempts against a single account, increasing the risk of unauthorized access if successful. Detecting this pattern early allows SOC teams to investigate, validate IP legitimacy, and prevent potential account compromise or lateral movement.
