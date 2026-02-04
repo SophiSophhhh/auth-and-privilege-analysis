@@ -2,13 +2,13 @@ Detection Name:
 Successful SSH Login Following Multiple Failed Attempts from Multiple Source IPs
 
 Description:
-This detection identifies authentication activity where multiple failed SSH login attempts against a single user account originate from different source IP addresses and are followed by a successful authentication. This pattern may indicate credential compromise or coordinated access attempts requiring further investigation.
+This detection identifies authentication activity where multiple failed SSH login attempts against a single user account originate from different source IP addresses and are followed by a successful authentication. This pattern may indicate credential compromise or unauthorized credential reuse and requires further investigation.
 
 Detection Logic:
 - ≥ 5 failed SSH authentication attempts
 - Originating from multiple distinct source IP addresses
 - Targeting the same user account
-- Followed by a successful SSH authentication to the same account from one of the previously observed source IPs
+- Followed by a successful SSH authentication to the same account from a source IP that previously generated failed authentication attempts
 - All activity occurring within a 10-minute time window
 
 Potential False Positives:
@@ -18,12 +18,13 @@ Potential False Positives:
 - Recent password rotations causing failed login attempts from multiple IPs.
 
 What Happened:
-Multiple failed SSH authentication attempts were observed against a single user account from several source IP addresses. A successful authentication then occurred from a source IP that had previously generated multiple failed attempts, indicating potential credential guessing or compromise requiring further investigation.
+Multiple failed SSH authentication attempts were observed against a single user account from several source IP addresses. A successful authentication then occurred from a source IP that had previously generated multiple failed attempts, indicating potential credential guessing or compromise.
 
+Risk Level:
 Medium–High — successful authentication following failed attempts from multiple source IPs may indicate credential compromise.
 
 Why SOC Cares:
-This behavior may indicate coordinated credential abuse attempts against a single account, increasing the risk of unauthorized access if successful. Detecting this pattern early allows SOC teams to investigate, validate IP legitimacy, and prevent potential account compromise or lateral movement.
+This behavior may indicate unauthorized credential reuse or credential guessing against a single account. Early detection enables SOC teams to validate IP legitimacy, assess account exposure, and reduce the risk of account compromise or downstream activity such as lateral movement.
 
 Additional Context to Review
 - Are the source IPs internal, external, or VPN-assigned?
