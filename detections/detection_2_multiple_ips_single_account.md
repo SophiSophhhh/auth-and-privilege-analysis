@@ -32,7 +32,7 @@ This behavior may indicate unauthorized credential reuse or credential guessing 
 - Is the account a shared or service account?
 - Does this user normally authenticate from multiple locations?
 
-Recommended Actions:
+## Recommended Actions:
 - Validate whether the source IP addresses are known and expected for the user account.
 - Correlate authentication logs to identify abnormal login patterns or repeated access attempts from multiple source IPs.
 - Monitor for any successful authentication events and subsequent post-login activity, including privilege escalation or persistence mechanisms.
