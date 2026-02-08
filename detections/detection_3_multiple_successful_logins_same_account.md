@@ -19,12 +19,13 @@ Risk Level:
 Medium – multiple successful logins from different source IPs targeting the same user account may indicate potential unauthorized access; however, no malicious post-login activity has been observed.
 
 Why SOC Cares
-Multiple successful SSH authentications from different source IPs to the same user account could indicate credential compromise and may enable privilege escalation, persistence, or lateral movement within the environment.
+Multiple successful SSH authentications to a single user account from different source IPs within a short time window may indicate unauthorized access or credential compromise. If an attacker gains valid credentials, they can maintain access, escalate privileges, or move laterally within the environment. Detecting this behavior helps SOC teams identify potentially compromised accounts early and reduce the impact of further malicious activity.
+
 
 Recommended Actions:
-- Validate whether the affected user account is a shared or service account and confirm that concurrent access is expected.
-- Verify whether the source IP addresses are authorized, recognized, and consistent with normal user behavior.
-- Correlate authentication logs to identify repeated access patterns or abnormal login behavior involving the same account.
-- Monitor post-login activity for indicators of privilege escalation, persistence, or lateral movement.
-  Escalate to Incident Response if the account is non-shared and the access pattern is determined to be unauthorized.
+- Verify whether the affected user account is expected to authenticate from multiple locations or devices.
+- Validate the source IP addresses to determine if they are known, authorized, or associated with VPN, proxy, or NAT infrastructure.
+- Review authentication history for the user account to identify deviations from normal login behavior.
+- Correlate with additional logs to assess post-authentication activity for signs of privilege escalation, persistence, or lateral movement.
+- Escalate to Incident Response if the access pattern is determined to be unauthorized or if suspicious post-login activity is identified.
 
