@@ -1,12 +1,12 @@
 ## Detection Name:
-Multiple Successful SSH Logins from Different Source IPs to the Same User Account
+Multiple Successful SSH Logins from Different Source IPs to a single User Account
 
 ## What Happened:
-Multiple successful SSH authentication events were observed for the same user account originating from different source IP addresses within a short time window. The timing of the logins suggests potential overlapping access to the account, which is unusual for a single user account and warrants further investigation.
+Multiple successful SSH authentication events were observed to a single user account originating from different source IP addresses within a short time window. The timing of the logins suggests potential overlapping access to the account, which is unusual for a single user account and warrants further investigation.
 
 ## Detection Logic:
 - Successful SSH authentication events
-- Targeting the same user account
+- Targeting a single user account
 - Originating from two or more distinct source IP addresses
 - Occurring within a defined time window (e.g., 10 minutes)
 
