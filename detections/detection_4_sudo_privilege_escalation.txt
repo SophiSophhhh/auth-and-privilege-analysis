@@ -1,16 +1,17 @@
-Detection Name: Sudo execution by non-root user shortly after authentication
+Detection Name: Immediate Privilege Elevation via Sudo Following SSH Login
 
 Detection Concept:
-Successful sudo command execution by a non-root user shortly after authentication, where sudo usage may be unexpected for the account.
+Successful sudo command execution by a non-root user shortly after authentication, where privilege elevation may be inconsistent with normal user behavior.
 
 What Happened:
 A successful SSH login to a non-root user account was followed by sudo command execution within a short time window.
 
 Detection Logic:
-- Successful SSH login
-- Followed by sudo command execution
-- By a non-root user
-- Within a short time window (e.g. 5–10 minutes)
+- A successful SSH authentication event is recorded for user X.
+- A sudo command execution event is recorded for the same user X.
+- The sudo event occurs within a defined short time window (e.g., 5–10 minutes) following the successful SSH login.
+- The account is not designated as a root account.
+- Sudo usage is evaluated against the user’s expected role and historical behavior.
 
 Potential False Positives:
 - Authorized users with sudo privileges performing legitimate administrative tasks shortly after login.
