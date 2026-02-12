@@ -1,7 +1,7 @@
 ## Detection Name
 Sudo Execution by Non-Root User Shortly After Authentication
 
-##Scenario
+## Scenario
 A successful SSH login was observed for user analyst1 from source IP 203.0.113.50. Within approximately two minutes of authentication, the same user executed multiple sudo commands:
 - /usr/bin/id
 - /bin/cat /etc/shadow
